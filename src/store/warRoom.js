@@ -27,7 +27,8 @@ export const useWarRoom = create((set, get) => ({
   },
 
   startFlood: async () => {
-    if (get().floodActive) return
+    if (get().floodActive || get().applications.length > 0) return
+    set({ floodActive: true })
 
     let apps
     try {
@@ -61,7 +62,6 @@ export const useWarRoom = create((set, get) => ({
       set({ _floodTimer: timer })
     }
 
-    set({ floodActive: true })
     scheduleNext()
   },
 

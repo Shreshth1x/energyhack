@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import PermitInbox from '../PermitInbox'
 import { useWarRoom } from '../../store/warRoom'
@@ -16,32 +16,37 @@ describe('PermitInbox', () => {
     useWarRoom.getState().reset()
   })
 
-  it('shows START DEMO button when empty', () => {
+  it('auto-loads applications on mount', async () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0.5)
     render(<PermitInbox />)
-    expect(screen.getByText(/START DEMO/)).toBeInTheDocument()
+    // startFlood is async (fetch fallback + dynamic import), then timers fire at real speed
+    // Wait for first application to appear
+    await waitFor(() => {
+      expect(screen.getByText(/Microsoft/)).toBeInTheDocument()
+    }, { timeout: 5000 })
+    vi.restoreAllMocks()
   })
 
-  it('renders cards when applications exist', async () => {
+  it('renders pre-loaded applications', async () => {
     vi.useFakeTimers()
     vi.spyOn(Math, 'random').mockReturnValue(0.5)
     await useWarRoom.getState().startFlood()
-    vi.advanceTimersByTime(3500 * 2)
+    vi.advanceTimersByTime(3500 * 8)
     vi.useRealTimers()
 
     render(<PermitInbox />)
-    expect(screen.getByText(/Microsoft/)).toBeInTheDocument()
+    expect(screen.getAllByText(/Microsoft/).length).toBeGreaterThan(0)
   })
 
   it('clicking card sets active application', async () => {
     vi.useFakeTimers()
     vi.spyOn(Math, 'random').mockReturnValue(0.5)
     await useWarRoom.getState().startFlood()
-    vi.advanceTimersByTime(3500)
+    vi.advanceTimersByTime(3500 * 8)
     vi.useRealTimers()
 
     render(<PermitInbox />)
-    fireEvent.click(screen.getByText(/Microsoft/))
-    // reviewApplication is async, but the sync part sets activeApplication
+    fireEvent.click(screen.getAllByText(/Microsoft/)[0])
     expect(useWarRoom.getState().activeApplication).toBe('APP-2024-001')
   })
 })
