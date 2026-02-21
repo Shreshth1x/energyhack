@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0F1117;
-  --color-panel: #161B22;
-  --color-border: #21262D;
-  --color-critical: #FF4444;
-  --color-warning: #E3A328;
-  --color-processing: #00C8A0;
-  --color-approved: #3FB950;
-  --color-text-primary: #E6EDF3;
-  --color-text-secondary: #8B949E;
-  --color-accent: #58A6FF;
+  --color-bg: #F8FAFB;
+  --color-panel: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-critical: #DC2626;
+  --color-warning: #D97706;
+  --color-processing: #059669;
+  --color-approved: #16A34A;
+  --color-text-primary: #1A202C;
+  --color-text-secondary: #64748B;
+  --color-accent: #16A34A;
 }
 
 body {
   margin: 0;
-  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+  font-family: 'Inter', system-ui, sans-serif;
   background-color: var(--color-bg);
   color: var(--color-text-primary);
   min-height: 100vh;
@@ -23,4 +23,33 @@ body {
 
 #root {
   min-height: 100vh;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 163, 74, 0.12);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.glass-panel-green {
+  background: linear-gradient(135deg, rgba(22,163,74,0.06) 0%, rgba(255,255,255,0.7) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 163, 74, 0.12);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.btn-elevated {
+  box-shadow: 0 1px 3px rgba(22,163,74,0.18), 0 1px 2px rgba(0,0,0,0.04);
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+}
+.btn-elevated:hover {
+  box-shadow: 0 2px 8px rgba(22,163,74,0.25), 0 1px 3px rgba(0,0,0,0.06);
+  transform: translateY(-0.5px);
+}
+.btn-elevated:active {
+  box-shadow: 0 0 0 2px rgba(22,163,74,0.2);
+  transform: translateY(0);
 }
