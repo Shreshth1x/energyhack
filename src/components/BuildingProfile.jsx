@@ -10,8 +10,8 @@ export default function BuildingProfile() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="border border-border rounded p-4">
-        <div className="text-xs font-bold tracking-widest text-text-secondary mb-2">BUILDING PROFILE</div>
+      <div className="glass-panel rounded-lg p-4">
+        <div className="text-xs font-bold tracking-widest text-accent/60 mb-2">BUILDING PROFILE</div>
         <div className="text-lg font-bold text-text-primary">{profile.address}</div>
         <div className="flex gap-4 mt-2 text-xs text-text-secondary">
           <span>Current Use: <span className="text-text-primary font-semibold">{profile.currentUse}</span></span>
@@ -22,8 +22,8 @@ export default function BuildingProfile() {
       </div>
 
       {/* Energy Systems */}
-      <div className="border border-border rounded p-4">
-        <div className="text-xs font-bold tracking-widest text-text-secondary mb-3">ENERGY SYSTEMS</div>
+      <div className="glass-panel rounded-lg p-4">
+        <div className="text-xs font-bold tracking-widest text-accent/60 mb-3">ENERGY SYSTEMS</div>
         <div className="space-y-1">
           {profile.energySystems?.map((sys, i) => (
             <div key={i} className="text-xs text-text-primary flex items-center gap-2">
@@ -40,8 +40,8 @@ export default function BuildingProfile() {
       </div>
 
       {/* Active Permits */}
-      <div className="border border-border rounded p-4">
-        <div className="text-xs font-bold tracking-widest text-text-secondary mb-3">ACTIVE PERMITS</div>
+      <div className="glass-panel rounded-lg p-4">
+        <div className="text-xs font-bold tracking-widest text-accent/60 mb-3">ACTIVE PERMITS</div>
         {profile.activePermits?.map((permit, i) => (
           <div key={i} className="text-xs text-text-primary flex items-center gap-2 py-1">
             <span className="text-processing">-</span>
@@ -51,8 +51,8 @@ export default function BuildingProfile() {
       </div>
 
       {/* Change History */}
-      <div className="border border-border rounded p-4">
-        <div className="text-xs font-bold tracking-widest text-text-secondary mb-3">CHANGE HISTORY</div>
+      <div className="glass-panel rounded-lg p-4">
+        <div className="text-xs font-bold tracking-widest text-accent/60 mb-3">CHANGE HISTORY</div>
         <div className="space-y-2">
           {profile.changeHistory?.map((entry, i) => (
             <div key={i} className="flex gap-3 text-xs">

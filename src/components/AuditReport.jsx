@@ -32,7 +32,7 @@ export default function AuditReport({ report }) {
         <div className="text-[10px] font-bold tracking-widest text-text-secondary mb-2">REQUIRED ACTIONS</div>
         <div className="space-y-2">
           {report.actions?.map((action, i) => (
-            <div key={i} className="flex items-start gap-3 p-3 border border-border rounded">
+            <div key={i} className="flex items-start gap-3 p-3 glass-panel rounded-lg">
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded bg-panel shrink-0 ${TARGET_COLORS[action.target] || 'text-text-primary'}`}>
                 {action.target}
               </span>
