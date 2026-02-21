@@ -59,6 +59,7 @@ function parseIntent(text) {
 
 export default function IntentBox() {
   const [text, setText] = useState('')
+  const [hasAnalyzed, setHasAnalyzed] = useState(false)
   const permitCascade = useBuildingProfiles((s) => s.permitCascade)
   const setProposedChange = useBuildingProfiles((s) => s.setProposedChange)
   const computePermitCascade = useBuildingProfiles((s) => s.computePermitCascade)
@@ -67,11 +68,12 @@ export default function IntentBox() {
     const change = parseIntent(text)
     setProposedChange(change)
     computePermitCascade()
+    setHasAnalyzed(true)
   }
 
   return (
     <div className="space-y-4">
-      <div className="border border-border rounded p-4">
+      <div className="glass-panel rounded-lg p-4">
         <div className="text-xs font-bold tracking-widest text-text-secondary mb-3">WHAT DO YOU WANT TO DO WITH THIS BUILDING?</div>
         <textarea
           value={text}
@@ -82,18 +84,33 @@ export default function IntentBox() {
         <button
           onClick={handleAnalyze}
           disabled={!text.trim()}
-          className="mt-2 px-4 py-2 bg-accent text-bg text-xs font-bold tracking-wider rounded hover:brightness-110 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+          className="mt-2 px-4 py-2.5 bg-accent text-bg text-xs font-bold tracking-wider rounded btn-elevated hover:brightness-110 transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:shadow-none"
         >
           ANALYZE PERMIT CASCADE
         </button>
       </div>
 
       <AnimatePresence>
+        {hasAnalyzed && permitCascade.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="border border-border rounded p-4"
+          >
+            <div className="text-xs font-bold tracking-widest text-text-secondary mb-2">
+              NO PERMIT TRIGGERS DETECTED
+            </div>
+            <div className="text-xs text-text-secondary">
+              Try being more specific — mention a use change (e.g., "data center", "restaurant", "warehouse"), electrical load (e.g., "5000kW"), occupancy count (e.g., "500 employees"), hazardous materials, or structural modifications.
+            </div>
+          </motion.div>
+        )}
         {permitCascade.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="border border-accent/30 rounded p-4"
+            className="glass-panel-green rounded-lg p-4"
           >
             <div className="text-xs font-bold tracking-widest text-accent mb-3">
               PERMIT CASCADE — {permitCascade.length} TRIGGERS DETECTED

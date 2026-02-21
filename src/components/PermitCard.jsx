@@ -18,10 +18,10 @@ export default function PermitCard({ application, onClick, isActive }) {
       initial={{ x: 300, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      whileHover={{ backgroundColor: 'rgba(88, 166, 255, 0.05)' }}
+      whileHover={{ backgroundColor: 'rgba(22, 163, 74, 0.07)' }}
       onClick={() => onClick(application.id)}
-      className={`p-3 border-b border-border cursor-pointer transition-colors ${
-        isActive ? 'bg-accent/10 border-l-2 border-l-accent' : ''
+      className={`p-4 border-b border-border cursor-pointer transition-all ${
+        isActive ? 'glass-panel-green border-l-2 border-l-accent' : ''
       }`}
     >
       <div className="flex items-start justify-between mb-1">
