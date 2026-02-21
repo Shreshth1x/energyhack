@@ -12,10 +12,10 @@ export default function MetricsBar() {
   })
 
   return (
-    <div className="flex items-center justify-between px-6 py-3 bg-panel border-b border-border">
+    <div className="flex items-center justify-between px-6 py-4 glass-panel-green border-b border-border">
       <div className="flex items-center gap-3">
         <h1 className="text-sm font-bold tracking-widest text-text-primary">
-          GRIDMIND <span className="text-text-secondary">//</span> LOVING COUNTY PERMIT OFFICE <span className="text-text-secondary">//</span> {date}
+          METROPOLIS <span className="text-accent/40">//</span> LOVING COUNTY PERMIT OFFICE <span className="text-accent/40">//</span> {date}
         </h1>
         {floodActive && (
           <span className="flex items-center gap-1.5 text-xs text-processing">

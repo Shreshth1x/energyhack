@@ -12,7 +12,7 @@ export default function WarRoom() {
     <div className="min-h-screen bg-bg flex flex-col">
       <MetricsBar />
       {/* Tab Navigation */}
-      <div className="flex border-b border-border">
+      <div className="flex border-b border-border bg-[rgba(22,163,74,0.04)]">
         <button
           onClick={() => setActiveTab('warroom')}
           className={`px-6 py-2 text-xs font-bold tracking-widest transition-colors ${
@@ -36,16 +36,16 @@ export default function WarRoom() {
       </div>
 
       {activeTab === 'warroom' ? (
-        <div className="flex-1 grid grid-cols-[400px_1fr] gap-0">
+        <div className="flex-1 grid grid-cols-[360px_1fr] gap-0">
           <div className="border-r border-border flex flex-col">
-            <div className="px-4 py-3 border-b border-border">
-              <h2 className="text-xs font-bold tracking-widest text-text-secondary">PERMIT INBOX</h2>
+            <div className="px-4 py-3 border-b border-border bg-[rgba(22,163,74,0.04)]">
+              <h2 className="text-xs font-bold tracking-widest text-accent/60">PERMIT INBOX</h2>
             </div>
             <PermitInbox />
           </div>
           <div className="flex flex-col">
-            <div className="px-4 py-3 border-b border-border">
-              <h2 className="text-xs font-bold tracking-widest text-text-secondary">AUDIT REVIEW</h2>
+            <div className="px-4 py-3 border-b border-border bg-[rgba(22,163,74,0.04)]">
+              <h2 className="text-xs font-bold tracking-widest text-accent/60">AUDIT REVIEW</h2>
             </div>
             <ApplicationReview />
           </div>

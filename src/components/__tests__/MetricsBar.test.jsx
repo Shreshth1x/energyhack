@@ -8,9 +8,9 @@ describe('MetricsBar', () => {
     useWarRoom.getState().reset()
   })
 
-  it('renders GRIDMIND heading', () => {
+  it('renders METROPOLIS heading', () => {
     render(<MetricsBar />)
-    expect(screen.getByText(/GRIDMIND/)).toBeInTheDocument()
+    expect(screen.getByText(/METROPOLIS/)).toBeInTheDocument()
   })
 
   it('renders LOVING COUNTY', () => {

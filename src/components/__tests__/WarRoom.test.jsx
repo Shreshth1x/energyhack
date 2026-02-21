@@ -10,7 +10,7 @@ describe('WarRoom', () => {
 
   it('renders without crash', () => {
     render(<WarRoom />)
-    expect(screen.getByText(/GRIDMIND/)).toBeInTheDocument()
+    expect(screen.getByText(/METROPOLIS/)).toBeInTheDocument()
   })
 
   it('shows PERMIT INBOX heading', () => {
